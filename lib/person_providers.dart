@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:person/person.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
@@ -8,7 +10,9 @@ Future<Person> personFuture(PersonFutureRef ref, String? personId) async {
   if (personId == null) {
     return Future.value(Person());
   }
+
   final p = await Future.delayed(const Duration(seconds: 1));
+
   return Future.value(p);
 }
 
@@ -16,7 +20,10 @@ Future<Person> personFuture(PersonFutureRef ref, String? personId) async {
 class PersonEditController extends _$PersonEditController {
   @override
   FutureOr<Person> build(Person person) async {
-    print('PersonEditScreen is building with $person');
+    ref.onDispose(() {
+      print('onDispose with $person');
+    });
+
     return person;
   }
 
@@ -30,8 +37,11 @@ class PersonEditController extends _$PersonEditController {
         final p = Person(id: 'Works');
         state = AsyncData(p);
       } else {
+        person.age = Random().nextInt(1000);
         state = AsyncData(person);
       }
+
+      ref.notifyListeners();
     } catch (e, s) {
       print(e);
       print(s);

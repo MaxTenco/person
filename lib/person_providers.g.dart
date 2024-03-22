@@ -64,8 +64,7 @@ class PersonFutureFamily extends Family<AsyncValue<Person>> {
   static const Iterable<ProviderOrFamily>? _allTransitiveDependencies = null;
 
   @override
-  Iterable<ProviderOrFamily>? get allTransitiveDependencies =>
-      _allTransitiveDependencies;
+  Iterable<ProviderOrFamily>? get allTransitiveDependencies => _allTransitiveDependencies;
 
   @override
   String? get name => r'personFutureProvider';
@@ -83,13 +82,9 @@ class PersonFutureProvider extends AutoDisposeFutureProvider<Person> {
           ),
           from: personFutureProvider,
           name: r'personFutureProvider',
-          debugGetCreateSourceHash:
-              const bool.fromEnvironment('dart.vm.product')
-                  ? null
-                  : _$personFutureHash,
+          debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product') ? null : _$personFutureHash,
           dependencies: PersonFutureFamily._dependencies,
-          allTransitiveDependencies:
-              PersonFutureFamily._allTransitiveDependencies,
+          allTransitiveDependencies: PersonFutureFamily._allTransitiveDependencies,
           personId: personId,
         );
 
@@ -147,19 +142,16 @@ mixin PersonFutureRef on AutoDisposeFutureProviderRef<Person> {
   String? get personId;
 }
 
-class _PersonFutureProviderElement
-    extends AutoDisposeFutureProviderElement<Person> with PersonFutureRef {
+class _PersonFutureProviderElement extends AutoDisposeFutureProviderElement<Person> with PersonFutureRef {
   _PersonFutureProviderElement(super.provider);
 
   @override
   String? get personId => (origin as PersonFutureProvider).personId;
 }
 
-String _$personEditControllerHash() =>
-    r'8c4fcd8dfeabaad7ab446c8d1a39a4528358bbb2';
+String _$personEditControllerHash() => r'9f9e882e096fd9aff79750f26c9625c911acf912';
 
-abstract class _$PersonEditController
-    extends BuildlessAutoDisposeAsyncNotifier<Person> {
+abstract class _$PersonEditController extends BuildlessAutoDisposeAsyncNotifier<Person> {
   late final Person person;
 
   FutureOr<Person> build(
@@ -202,16 +194,14 @@ class PersonEditControllerFamily extends Family<AsyncValue<Person>> {
   static const Iterable<ProviderOrFamily>? _allTransitiveDependencies = null;
 
   @override
-  Iterable<ProviderOrFamily>? get allTransitiveDependencies =>
-      _allTransitiveDependencies;
+  Iterable<ProviderOrFamily>? get allTransitiveDependencies => _allTransitiveDependencies;
 
   @override
   String? get name => r'personEditControllerProvider';
 }
 
 /// See also [PersonEditController].
-class PersonEditControllerProvider
-    extends AutoDisposeAsyncNotifierProviderImpl<PersonEditController, Person> {
+class PersonEditControllerProvider extends AutoDisposeAsyncNotifierProviderImpl<PersonEditController, Person> {
   /// See also [PersonEditController].
   PersonEditControllerProvider(
     Person person,
@@ -219,13 +209,9 @@ class PersonEditControllerProvider
           () => PersonEditController()..person = person,
           from: personEditControllerProvider,
           name: r'personEditControllerProvider',
-          debugGetCreateSourceHash:
-              const bool.fromEnvironment('dart.vm.product')
-                  ? null
-                  : _$personEditControllerHash,
+          debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product') ? null : _$personEditControllerHash,
           dependencies: PersonEditControllerFamily._dependencies,
-          allTransitiveDependencies:
-              PersonEditControllerFamily._allTransitiveDependencies,
+          allTransitiveDependencies: PersonEditControllerFamily._allTransitiveDependencies,
           person: person,
         );
 
@@ -267,8 +253,7 @@ class PersonEditControllerProvider
   }
 
   @override
-  AutoDisposeAsyncNotifierProviderElement<PersonEditController, Person>
-      createElement() {
+  AutoDisposeAsyncNotifierProviderElement<PersonEditController, Person> createElement() {
     return _PersonEditControllerProviderElement(this);
   }
 
@@ -291,9 +276,7 @@ mixin PersonEditControllerRef on AutoDisposeAsyncNotifierProviderRef<Person> {
   Person get person;
 }
 
-class _PersonEditControllerProviderElement
-    extends AutoDisposeAsyncNotifierProviderElement<PersonEditController,
-        Person> with PersonEditControllerRef {
+class _PersonEditControllerProviderElement extends AutoDisposeAsyncNotifierProviderElement<PersonEditController, Person> with PersonEditControllerRef {
   _PersonEditControllerProviderElement(super.provider);
 
   @override

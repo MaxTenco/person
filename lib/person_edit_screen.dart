@@ -9,9 +9,18 @@ class PersonEditScreen extends ConsumerWidget {
   Widget _data(Person person, WidgetRef ref) {
     final state = ref.watch(personEditControllerProvider(person));
 
+    print(state);
+    print('isLoading: ${state.isLoading}, isRefreshing: ${state.isRefreshing}, isReloading: ${state.isReloading}');
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
+        Visibility(
+          visible: state.isLoading,
+          child: const Center(
+            child: CircularProgressIndicator(),
+          ),
+        ),
         Center(
           child: Text(state.value?.id ?? 'Id is null'),
         ),
@@ -22,7 +31,7 @@ class PersonEditScreen extends ConsumerWidget {
                 ? null
                 : () {
                     final newPerson = Person(id: state.value!.id);
-                    ref.read(personEditControllerProvider(state.asData!.value).notifier).save(newPerson);
+                    ref.read(personEditControllerProvider(person).notifier).save(newPerson);
                   },
             child: const Text('Save'),
           ),
