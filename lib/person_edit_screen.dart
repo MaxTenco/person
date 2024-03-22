@@ -10,7 +10,6 @@ class PersonEditScreen extends ConsumerWidget {
     final state = ref.watch(personEditControllerProvider(person));
 
     print(state);
-    print('isLoading: ${state.isLoading}, isRefreshing: ${state.isRefreshing}, isReloading: ${state.isReloading}');
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
