@@ -29,9 +29,9 @@ class PersonEditController extends _$PersonEditController {
       if (person.id == null) {
         final p = Person(id: 'Works');
         state = AsyncData(p);
+      } else {
+        state = AsyncData(person);
       }
-
-      state = AsyncData(person);
     } catch (e, s) {
       print(e);
       print(s);
