@@ -6,8 +6,8 @@ import 'package:person/person_providers.dart';
 class PersonEditScreen extends ConsumerWidget {
   const PersonEditScreen({super.key});
 
-  Widget _data(Person person, WidgetRef ref) {
-    final state = ref.watch(personEditControllerProvider(person));
+  Widget _data(WidgetRef ref) {
+    final state = ref.watch(personEditControllerProvider);
 
     print(state);
 
@@ -30,7 +30,7 @@ class PersonEditScreen extends ConsumerWidget {
                 ? null
                 : () {
                     final newPerson = Person(id: state.value!.id);
-                    ref.read(personEditControllerProvider(person).notifier).save(newPerson);
+                    ref.read(personEditControllerProvider.notifier).save(newPerson);
                   },
             child: const Text('Save'),
           ),
@@ -41,13 +41,13 @@ class PersonEditScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final state = ref.watch(personFutureProvider(null));
+    final state = ref.watch(personEditProvider);
 
     return Scaffold(
       body: Scaffold(
         appBar: AppBar(),
         body: state.when(
-          data: (person) => _data(person, ref),
+          data: (person) => _data(ref),
           error: (_, __) => const Text('Error'),
           loading: () => const Center(
             child: CircularProgressIndicator(),

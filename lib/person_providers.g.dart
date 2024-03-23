@@ -149,138 +149,32 @@ class _PersonFutureProviderElement extends AutoDisposeFutureProviderElement<Pers
   String? get personId => (origin as PersonFutureProvider).personId;
 }
 
-String _$personEditControllerHash() => r'9f9e882e096fd9aff79750f26c9625c911acf912';
+String _$personEditHash() => r'fb14c62c80fd2a3fbd69075533bc684a4ec822cf';
 
-abstract class _$PersonEditController extends BuildlessAutoDisposeAsyncNotifier<Person> {
-  late final Person person;
+/// See also [PersonEdit].
+@ProviderFor(PersonEdit)
+final personEditProvider = AutoDisposeAsyncNotifierProvider<PersonEdit, Person>.internal(
+  PersonEdit.new,
+  name: r'personEditProvider',
+  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product') ? null : _$personEditHash,
+  dependencies: null,
+  allTransitiveDependencies: null,
+);
 
-  FutureOr<Person> build(
-    Person person,
-  );
-}
+typedef _$PersonEdit = AutoDisposeAsyncNotifier<Person>;
+
+String _$personEditControllerHash() => r'ca4c7df30a05802eda4af1398b8d20ec21000bac';
 
 /// See also [PersonEditController].
 @ProviderFor(PersonEditController)
-const personEditControllerProvider = PersonEditControllerFamily();
+final personEditControllerProvider = AutoDisposeAsyncNotifierProvider<PersonEditController, Person>.internal(
+  PersonEditController.new,
+  name: r'personEditControllerProvider',
+  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product') ? null : _$personEditControllerHash,
+  dependencies: null,
+  allTransitiveDependencies: null,
+);
 
-/// See also [PersonEditController].
-class PersonEditControllerFamily extends Family<AsyncValue<Person>> {
-  /// See also [PersonEditController].
-  const PersonEditControllerFamily();
-
-  /// See also [PersonEditController].
-  PersonEditControllerProvider call(
-    Person person,
-  ) {
-    return PersonEditControllerProvider(
-      person,
-    );
-  }
-
-  @override
-  PersonEditControllerProvider getProviderOverride(
-    covariant PersonEditControllerProvider provider,
-  ) {
-    return call(
-      provider.person,
-    );
-  }
-
-  static const Iterable<ProviderOrFamily>? _dependencies = null;
-
-  @override
-  Iterable<ProviderOrFamily>? get dependencies => _dependencies;
-
-  static const Iterable<ProviderOrFamily>? _allTransitiveDependencies = null;
-
-  @override
-  Iterable<ProviderOrFamily>? get allTransitiveDependencies => _allTransitiveDependencies;
-
-  @override
-  String? get name => r'personEditControllerProvider';
-}
-
-/// See also [PersonEditController].
-class PersonEditControllerProvider extends AutoDisposeAsyncNotifierProviderImpl<PersonEditController, Person> {
-  /// See also [PersonEditController].
-  PersonEditControllerProvider(
-    Person person,
-  ) : this._internal(
-          () => PersonEditController()..person = person,
-          from: personEditControllerProvider,
-          name: r'personEditControllerProvider',
-          debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product') ? null : _$personEditControllerHash,
-          dependencies: PersonEditControllerFamily._dependencies,
-          allTransitiveDependencies: PersonEditControllerFamily._allTransitiveDependencies,
-          person: person,
-        );
-
-  PersonEditControllerProvider._internal(
-    super._createNotifier, {
-    required super.name,
-    required super.dependencies,
-    required super.allTransitiveDependencies,
-    required super.debugGetCreateSourceHash,
-    required super.from,
-    required this.person,
-  }) : super.internal();
-
-  final Person person;
-
-  @override
-  FutureOr<Person> runNotifierBuild(
-    covariant PersonEditController notifier,
-  ) {
-    return notifier.build(
-      person,
-    );
-  }
-
-  @override
-  Override overrideWith(PersonEditController Function() create) {
-    return ProviderOverride(
-      origin: this,
-      override: PersonEditControllerProvider._internal(
-        () => create()..person = person,
-        from: from,
-        name: null,
-        dependencies: null,
-        allTransitiveDependencies: null,
-        debugGetCreateSourceHash: null,
-        person: person,
-      ),
-    );
-  }
-
-  @override
-  AutoDisposeAsyncNotifierProviderElement<PersonEditController, Person> createElement() {
-    return _PersonEditControllerProviderElement(this);
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return other is PersonEditControllerProvider && other.person == person;
-  }
-
-  @override
-  int get hashCode {
-    var hash = _SystemHash.combine(0, runtimeType.hashCode);
-    hash = _SystemHash.combine(hash, person.hashCode);
-
-    return _SystemHash.finish(hash);
-  }
-}
-
-mixin PersonEditControllerRef on AutoDisposeAsyncNotifierProviderRef<Person> {
-  /// The parameter `person` of this provider.
-  Person get person;
-}
-
-class _PersonEditControllerProviderElement extends AutoDisposeAsyncNotifierProviderElement<PersonEditController, Person> with PersonEditControllerRef {
-  _PersonEditControllerProviderElement(super.provider);
-
-  @override
-  Person get person => (origin as PersonEditControllerProvider).person;
-}
+typedef _$PersonEditController = AutoDisposeAsyncNotifier<Person>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member
